@@ -1,0 +1,26 @@
+{
+  "dropped_papers": [
+    "10.21203/rs.3.rs-9882260/v1",
+    "10.54254/2753-8818/2026.dl34055"
+  ],
+  "blanked_summary_papers": [
+    "10.22214/ijraset.2026.82233",
+    "10.1093/sleep/zsag091.0346"
+  ],
+  "noised_summary_papers": [
+    "10.32473/flairs.39.1.141782",
+    "10.55041/isjem07213"
+  ],
+  "truncated_title_papers": [
+    "10.20944/preprints202604.0339.v1",
+    "10.70121/001c.158711"
+  ],
+  "stale_published_papers": [
+    "10.7717/peerj-cs.3642",
+    "10.3390/app16052244"
+  ],
+  "duplicated_papers": [
+    "10.35314/3y9hy151",
+    "10.20944/preprints202602.0996.v1"
+  ]
+}
