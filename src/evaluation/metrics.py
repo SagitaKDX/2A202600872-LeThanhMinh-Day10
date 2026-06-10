@@ -33,6 +33,8 @@ class EvaluationBundle:
 def _token_f1(reference: str, prediction: str) -> float:
     ref_tokens = normalize_whitespace(reference).lower().split()
     pred_tokens = normalize_whitespace(prediction).lower().split()
+    if not ref_tokens and not pred_tokens:
+        return 1.0
     if not ref_tokens or not pred_tokens:
         return 0.0
     ref_set = set(ref_tokens)
