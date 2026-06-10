@@ -14,7 +14,14 @@ from observability.quality import run_data_quality_checks, build_freshness_repor
 from observability.reporting import generate_corruption_report
 
 
-def main() -> None:
+def main(
+    drop_latest: bool = True,
+    blank_summaries: bool = True,
+    inject_noise: bool = True,
+    truncate_titles: bool = True,
+    stale_dates: bool = True,
+    duplicate_rows: bool = True,
+) -> None:
     """End-to-end corruption, evaluation, repair, and comparison pipeline."""
     # 1. Load settings
     print("Step 1: Loading settings...")
@@ -39,7 +46,16 @@ def main() -> None:
     
     # 3. Create corrupted dataframe
     print("Step 3: Creating corrupted dataset...")
-    df_corrupted = corrupt_clean_dataframe(df_clean, settings.paths.corruption_log)
+    df_corrupted = corrupt_clean_dataframe(
+        df_clean,
+        settings.paths.corruption_log,
+        drop_latest=drop_latest,
+        blank_summaries=blank_summaries,
+        inject_noise=inject_noise,
+        truncate_titles=truncate_titles,
+        stale_dates=stale_dates,
+        duplicate_rows=duplicate_rows,
+    )
     print(f"Corrupted dataset created of size: {len(df_corrupted)}")
     
     # 4. Save corrupted artifacts

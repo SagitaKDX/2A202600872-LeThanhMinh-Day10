@@ -1,0 +1,198 @@
+/* Corruption & Reliability Stylesheet */
+
+.corr-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+/* Customize Corruption Panel */
+.corr-card-control {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.corruption-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-checkbox:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(79, 70, 229, 0.02);
+}
+
+.option-checkbox input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--primary-color);
+    margin-top: 0.15rem;
+    cursor: pointer;
+}
+
+.checkbox-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.checkbox-details strong {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.checkbox-details span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.25;
+}
+
+.corr-action-bar {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.25rem;
+}
+
+/* Comparison Table Card */
+.corr-comparison-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.matrix-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.comparison-table th, 
+.comparison-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-table th {
+    background-color: var(--background-color);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.005);
+}
+
+/* Column Highlighting Styles */
+.col-baseline {
+    background-color: rgba(16, 185, 129, 0.015);
+    text-align: center;
+    width: 25%;
+}
+
+.col-corrupted {
+    background-color: rgba(239, 68, 68, 0.015);
+    text-align: center;
+    width: 25%;
+    font-weight: 500;
+}
+
+.col-repaired {
+    background-color: rgba(79, 70, 229, 0.015);
+    text-align: center;
+    width: 25%;
+}
+
+/* Understanding Metrics Card */
+.metrics-explanation-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.explanations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+}
+
+.exp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.exp-item i {
+    font-size: 1.25rem;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.exp-item h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-color);
+}
+
+.exp-item p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Utility Badges for status */
+.badge-neutral {
+    background-color: var(--background-color);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}

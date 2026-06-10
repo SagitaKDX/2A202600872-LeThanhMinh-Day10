@@ -19,10 +19,45 @@ from retrieval.agent import build_agent, run_agent_question
 from pipelines.phase1 import main as run_phase1_main
 
 
+class CorruptionRunRequest(BaseModel):
+    drop_latest: bool = True
+    blank_summaries: bool = True
+    inject_noise: bool = True
+    truncate_titles: bool = True
+    stale_dates: bool = True
+    duplicate_rows: bool = True
+
+
 agent_instance = None
 settings_instance = None
 index_instance = None
 pipeline_running = False
+corruption_running = False
+
+
+def background_run_corruption(req: CorruptionRunRequest):
+    global corruption_running, agent_instance, settings_instance, index_instance
+    try:
+        corruption_running = True
+        print("[Server] Starting background corruption flow run...")
+        from pipelines.corruption_flow import main as run_corruption_main
+        run_corruption_main(
+            drop_latest=req.drop_latest,
+            blank_summaries=req.blank_summaries,
+            inject_noise=req.inject_noise,
+            truncate_titles=req.truncate_titles,
+            stale_dates=req.stale_dates,
+            duplicate_rows=req.duplicate_rows,
+        )
+        # Reload index and agent
+        settings_instance = load_settings()
+        index_instance = LocalEmbeddingIndex.load(settings_instance)
+        agent_instance = build_agent(settings_instance, index_instance)
+        print("[Server] Background corruption flow completed.")
+    except Exception as e:
+        print(f"[Server] Error in background corruption run: {e}")
+    finally:
+        corruption_running = False
 
 
 def background_run_pipeline():
@@ -139,6 +174,53 @@ async def get_report():
         return {"report": "Report has not been generated yet."}
     with open(path, "r", encoding="utf-8") as f:
         return {"report": f.read()}
+
+
+@app.post("/api/corruption/run")
+async def run_corruption(req: CorruptionRunRequest, background_tasks: BackgroundTasks):
+    global corruption_running, pipeline_running
+    if corruption_running or pipeline_running:
+        return {"message": "Pipeline or corruption flow is already running.", "status": "running"}
+    background_tasks.add_task(background_run_corruption, req)
+    return {"message": "Corruption flow started in the background.", "status": "started"}
+
+
+@app.get("/api/corruption/status")
+async def get_corruption_status():
+    global corruption_running
+    return {"corruption_running": corruption_running}
+
+
+@app.get("/api/corruption/results")
+async def get_corruption_results():
+    settings = load_settings()
+    
+    def read_json_safe(path):
+        if not path.exists():
+            return {}
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+            
+    report_content = ""
+    if settings.paths.comparison_report.exists():
+        with open(settings.paths.comparison_report, "r", encoding="utf-8") as f:
+            report_content = f.read()
+            
+    corrupted_quality = read_json_safe(settings.paths.quality_dir / "corrupted_quality.json")
+    repaired_quality = read_json_safe(settings.paths.quality_dir / "repaired_quality.json")
+    corrupted_freshness = read_json_safe(settings.paths.quality_dir / "freshness_report_corrupted.json")
+    repaired_freshness = read_json_safe(settings.paths.quality_dir / "freshness_report_repaired.json")
+            
+    return {
+        "baseline_metrics": read_json_safe(settings.paths.baseline_metrics),
+        "corrupted_metrics": read_json_safe(settings.paths.corrupted_metrics),
+        "repaired_metrics": read_json_safe(settings.paths.repaired_metrics),
+        "corrupted_quality": corrupted_quality,
+        "repaired_quality": repaired_quality,
+        "corrupted_freshness": corrupted_freshness,
+        "repaired_freshness": repaired_freshness,
+        "report": report_content
+    }
 
 
 # Mount the static frontend files

@@ -13,6 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "Observability",
             navId: "nav-observability",
             init: initObservability
+        },
+        "#corruption": {
+            template: "components/corruption.html",
+            title: "Data Reliability",
+            navId: "nav-corruption",
+            init: initCorruption
         }
     };
 
@@ -81,10 +87,14 @@ async function pollPipelineStatusGlobal() {
     if (!indicator) return;
 
     try {
-        const res = await fetch("/api/observability/status");
-        const data = await res.json();
+        const [resBase, resCorr] = await Promise.all([
+            fetch("/api/observability/status"),
+            fetch("/api/corruption/status")
+        ]);
+        const dataBase = await resBase.json();
+        const dataCorr = await resCorr.json();
         
-        if (data.pipeline_running) {
+        if (dataBase.pipeline_running || dataCorr.corruption_running) {
             indicator.className = "status-indicator running";
             indicator.innerHTML = `<i class="fa-solid fa-arrows-rotate fa-spin"></i> Pipeline Running...`;
         } else {

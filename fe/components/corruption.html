@@ -1,0 +1,163 @@
+<div class="corr-container">
+    <!-- Controls Card -->
+    <div class="corr-card-control">
+        <div class="action-desc">
+            <h3><i class="fa-solid fa-triangle-exclamation color-warning"></i> Customize Data Corruption</h3>
+            <p>Select which types of data corruption to simulate in the pipeline, then trigger the evaluation and repair cycle.</p>
+        </div>
+        
+        <div class="corruption-options">
+            <label class="option-checkbox">
+                <input type="checkbox" id="chk-drop-latest" checked>
+                <div class="checkbox-details">
+                    <strong>Drop Latest Records</strong>
+                    <span>Removes the newest papers to test retrieval gaps.</span>
+                </div>
+            </label>
+            <label class="option-checkbox">
+                <input type="checkbox" id="chk-blank-summaries" checked>
+                <div class="checkbox-details">
+                    <strong>Blank Summaries</strong>
+                    <span>Wipes out abstracts of random records.</span>
+                </div>
+            </label>
+            <label class="option-checkbox">
+                <input type="checkbox" id="chk-inject-noise" checked>
+                <div class="checkbox-details">
+                    <strong>Inject Summary Noise</strong>
+                    <span>Appends garbage strings to summaries to disrupt embeddings.</span>
+                </div>
+            </label>
+            <label class="option-checkbox">
+                <input type="checkbox" id="chk-truncate-titles" checked>
+                <div class="checkbox-details">
+                    <strong>Truncate Titles</strong>
+                    <span>Cuts down paper titles to break exact title matching.</span>
+                </div>
+            </label>
+            <label class="option-checkbox">
+                <input type="checkbox" id="chk-stale-dates" checked>
+                <div class="checkbox-details">
+                    <strong>Stale Publication Dates</strong>
+                    <span>Forces publication dates to year 1995 to fail freshness checks.</span>
+                </div>
+            </label>
+            <label class="option-checkbox">
+                <input type="checkbox" id="chk-duplicate-rows" checked>
+                <div class="checkbox-details">
+                    <strong>Duplicate Records</strong>
+                    <span>Inserts duplicate rows to break paper ID uniqueness check.</span>
+                </div>
+            </label>
+        </div>
+
+        <div class="corr-action-bar">
+            <button class="btn btn-primary" id="btn-run-corruption" onclick="triggerCorruptionRun()">
+                <i class="fa-solid fa-play"></i> Run Corruption & Repair Flow
+            </button>
+        </div>
+    </div>
+
+    <!-- Comparison Table Card -->
+    <div class="corr-comparison-card">
+        <h3><i class="fa-solid fa-circle-nodes color-indigo"></i> Reliability Comparison Matrix</h3>
+        <p class="matrix-subtitle">Side-by-side performance of the RAG pipeline in different states.</p>
+        
+        <div class="table-responsive">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Observability Metric / Check</th>
+                        <th class="col-baseline">🟢 Baseline (Clean)</th>
+                        <th class="col-corrupted">🔴 Corrupted</th>
+                        <th class="col-repaired">🟢 Repaired</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Retrieval Hit Rate (Top-K)</strong></td>
+                        <td id="m-baseline-hitrate" class="col-baseline">100.0%</td>
+                        <td id="m-corrupted-hitrate" class="col-corrupted">-</td>
+                        <td id="m-repaired-hitrate" class="col-repaired">-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mean Token F1 Score</strong></td>
+                        <td id="m-baseline-f1" class="col-baseline">100.0%</td>
+                        <td id="m-corrupted-f1" class="col-corrupted">-</td>
+                        <td id="m-repaired-f1" class="col-repaired">-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LLM Judge Accuracy</strong></td>
+                        <td id="m-baseline-accuracy" class="col-baseline">100.0%</td>
+                        <td id="m-corrupted-accuracy" class="col-corrupted">-</td>
+                        <td id="m-repaired-accuracy" class="col-repaired">-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mean LLM Judge Score (1-5)</strong></td>
+                        <td id="m-baseline-score" class="col-baseline">5.00/5.0</td>
+                        <td id="m-corrupted-score" class="col-corrupted">-</td>
+                        <td id="m-repaired-score" class="col-repaired">-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Quality Check Status</strong></td>
+                        <td class="col-baseline"><span class="badge badge-success">PASS</span></td>
+                        <td class="col-corrupted"><span class="badge" id="m-corrupted-quality">-</span></td>
+                        <td class="col-repaired"><span class="badge" id="m-repaired-quality">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Freshness Check Status</strong></td>
+                        <td class="col-baseline"><span class="badge badge-success">FRESH</span></td>
+                        <td class="col-corrupted"><span class="badge" id="m-corrupted-freshness">-</span></td>
+                        <td class="col-repaired"><span class="badge" id="m-repaired-freshness">-</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Explain the Metrics Section -->
+    <div class="metrics-explanation-card">
+        <h3><i class="fa-solid fa-circle-question color-blue"></i> Understanding RAG Metrics</h3>
+        <div class="explanations-grid">
+            <div class="exp-item">
+                <i class="fa-solid fa-bullseye"></i>
+                <div>
+                    <h5>Retrieval Hit Rate</h5>
+                    <p>Percentage of times the vector database successfully fetches the correct paper for the question. When data is dropped or titles are modified, this hit rate falls.</p>
+                </div>
+            </div>
+            <div class="exp-item">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <div>
+                    <h5>Mean Token F1 Score</h5>
+                    <p>Measures the precise word overlap between the agent's response and the ground truth. Blanking summaries or adding noise destroys text structure, dropping F1.</p>
+                </div>
+            </div>
+            <div class="exp-item">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <div>
+                    <h5>Judge Accuracy & Score</h5>
+                    <p>Evaluated using the local LLM as a judge. It verifies semantic correctness (substance over exact syntax). Noise or missing summaries cause hallucinations and lower scores.</p>
+                </div>
+            </div>
+            <div class="exp-item">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <div>
+                    <h5>Quality & Freshness Checks</h5>
+                    <p>Aggregated assertions checking database constraints (uniqueness of IDs, minimum text lengths) and publication age limits (identifying stale documents).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generated Comparison Report -->
+    <div class="obs-report-section">
+        <div class="report-header">
+            <h3><i class="fa-regular fa-file-lines color-indigo"></i> Reliability Comparison Report</h3>
+            <button class="btn btn-secondary" onclick="copyCorruptionReport()"><i class="fa-regular fa-copy"></i> Copy Markdown</button>
+        </div>
+        <div class="report-content" id="report-md-content-corruption">
+            <pre class="report-pre" id="report-pre-text-corruption">Run the Corruption & Repair Flow to generate the comparison report.</pre>
+        </div>
+    </div>
+</div>
