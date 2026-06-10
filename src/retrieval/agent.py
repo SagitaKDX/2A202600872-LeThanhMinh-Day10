@@ -30,7 +30,17 @@ def build_agent(settings: Settings, index: LocalEmbeddingIndex):
         """Look up a paper by exact paper_id or exact title from the local corpus."""
         record = index.lookup(paper_id_or_title)
         if not record:
-            return "No exact paper match found."
+            needle = paper_id_or_title.strip().lower()
+            for doc in index.documents:
+                title = doc["title"].lower()
+                paper_id = doc["paper_id"].lower()
+                if needle in title or title in needle or needle in paper_id:
+                    return (
+                        f"paper_id: {doc['paper_id']}\n"
+                        f"title: {doc['title']}\n"
+                        f"{doc['content']}"
+                    )
+            return "No exact paper match found. Please try searching semantically using the semantic_search_papers tool."
         return (
             f"paper_id: {record['paper_id']}\n"
             f"title: {record['title']}\n"

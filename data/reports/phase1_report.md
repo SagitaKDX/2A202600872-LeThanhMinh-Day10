@@ -1,6 +1,6 @@
 # Baseline Data Pipeline & Observability Report
 
-Generated on: 2026-06-10T08:16:18.228614+00:00
+Generated on: 2026-06-10T08:30:57.822992+00:00
 
 ## 📊 Source API Data Extraction Summary
 - **Source Endpoint**: Crossref REST API
@@ -11,9 +11,9 @@ Generated on: 2026-06-10T08:16:18.228614+00:00
 ## 🔍 Retrieval & QA Evaluation Metrics
 - **Total Samples Tested**: 20
 - **Retrieval Hit Rate (Top-K)**: 100.0%
-- **Mean Token F1 Score**: 75.0%
-- **Judge Correctness Accuracy**: 75.0%
-- **Mean LLM Judge Score (1-5)**: 4.00/5.0
+- **Mean Token F1 Score**: 100.0%
+- **Judge Correctness Accuracy**: 100.0%
+- **Mean LLM Judge Score (1-5)**: 5.00/5.0
 
 ### Ragas Pass Evaluation:
 - `Set RUN_RAGAS=1 to enable the slower Ragas pass.` (Configured via `RUN_RAGAS` env var)
