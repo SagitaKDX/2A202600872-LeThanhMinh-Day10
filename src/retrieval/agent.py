@@ -8,6 +8,7 @@ from langchain.tools import tool
 from core.config import Settings
 from retrieval.index import LocalEmbeddingIndex
 from retrieval.llm import build_llm
+from retrieval.prompts import AGENT_SYSTEM_PROMPT
 
 
 def build_agent(settings: Settings, index: LocalEmbeddingIndex):
@@ -51,11 +52,7 @@ def build_agent(settings: Settings, index: LocalEmbeddingIndex):
     return create_agent(
         model=llm,
         tools=[semantic_search_papers, lookup_paper],
-        system_prompt=(
-            "You answer questions about the indexed scholarly paper corpus sourced from Crossref. "
-            "Use tools before answering factual questions. "
-            "If the indexed corpus does not support the answer, say so clearly."
-        ),
+        system_prompt=AGENT_SYSTEM_PROMPT,
         name="paper_corpus_agent",
     )
 
