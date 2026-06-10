@@ -55,9 +55,47 @@ def main() -> None:
     index = LocalEmbeddingIndex.build(df_clean, settings)
     print(f"Successfully built Chroma collection: {index.collection_name}")
     
-    print("\n--- Crawl, Clean, Test Set & Indexing completed successfully! ---")
-    print("Steps 7-10 (Evaluation, Quality/Freshness checks, Reporting) are not implemented yet.")
-    raise NotImplementedError("Student task: implement remaining steps of phase1 pipeline.")
+    # 7. Evaluate
+    print("Step 7: Evaluating pipeline...")
+    from evaluation.metrics import evaluate_pipeline
+    evaluation_bundle = evaluate_pipeline(
+        settings=settings,
+        index=index,
+        test_set_path=settings.paths.eval_testset,
+        metrics_output_path=settings.paths.baseline_metrics,
+        answers_output_path=settings.paths.baseline_answers,
+    )
+    print("Evaluation completed successfully.")
+    print(f"Summary Metrics: {evaluation_bundle.summary}")
+    
+    # 8. Run quality checks and freshness report
+    print("Step 8: Running quality and freshness checks...")
+    from observability.quality import run_data_quality_checks, build_freshness_report
+    quality_report = run_data_quality_checks(df_clean, settings, report_name="baseline_quality")
+    freshness_report = build_freshness_report(df_clean, settings, settings.paths.freshness_report)
+    print("Quality and freshness reports generated.")
+
+    # 9. Create baseline markdown report
+    print("Step 9: Generating Phase 1 markdown report...")
+    from observability.reporting import generate_phase1_report
+    source_summary = {
+        "run_date": run_date.isoformat(),
+        "source_api": settings.source_api,
+        "source_query": settings.source_query,
+        "max_results": settings.max_results,
+        "total_raw_records": len(records),
+    }
+    generate_phase1_report(
+        report_path=settings.paths.baseline_report,
+        source_summary=source_summary,
+        metrics=evaluation_bundle.summary,
+        quality=quality_report,
+        freshness=freshness_report,
+    )
+    print(f"Markdown report written to: {settings.paths.baseline_report}")
+
+    print("\n--- Phase 1 baseline pipeline completed successfully! ---")
+
 
 
 
