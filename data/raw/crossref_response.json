@@ -134,7 +134,7 @@
           "date-time": "2026-05-12T14:44:25Z",
           "timestamp": 1778597065000
         },
-        "score": 43.88269,
+        "score": 43.882896,
         "resource": {
           "primary": {
             "URL": "https://nvlpubs.nist.gov/nistpubs/ir/2026/NIST.IR.8579A.pdf"
@@ -297,7 +297,7 @@
           "date-time": "2026-02-03T01:26:47Z",
           "timestamp": 1770082007000
         },
-        "score": 41.0541,
+        "score": 41.054344,
         "resource": {
           "primary": {
             "URL": "https://jurnal.umb.ac.id/index.php/JSAI/article/view/9632"
@@ -512,7 +512,7 @@
           "date-time": "2026-04-07T00:32:52Z",
           "timestamp": 1775521972000
         },
-        "score": 37.61909,
+        "score": 37.619427,
         "resource": {
           "primary": {
             "URL": "https://www.preprints.org/manuscript/202604.0339/v1"
@@ -613,7 +613,7 @@
           "date-time": "2026-05-20T13:23:30Z",
           "timestamp": 1779283410000
         },
-        "score": 37.24964,
+        "score": 37.249874,
         "resource": {
           "primary": {
             "URL": "https://www.ssrn.com/abstract=6761739"
@@ -724,7 +724,7 @@
           "date-time": "2026-03-13T03:48:02Z",
           "timestamp": 1773373682000
         },
-        "score": 37.20642,
+        "score": 37.216022,
         "resource": {
           "primary": {
             "URL": "https://www.ssrn.com/abstract=6386988"
@@ -885,7 +885,7 @@
           "date-time": "2026-05-10T01:41:52Z",
           "timestamp": 1778377312000
         },
-        "score": 37.074234,
+        "score": 37.205708,
         "resource": {
           "primary": {
             "URL": "https://www.ssrn.com/abstract=6741395"
@@ -1004,7 +1004,7 @@
           "date-time": "2026-05-06T16:40:10Z",
           "timestamp": 1778085610000
         },
-        "score": 36.62367,
+        "score": 36.624023,
         "resource": {
           "primary": {
             "URL": "https://isjem.com/download/speculative-retrieval-augmented-generation-for-cost-efficient-large-language-model-inference/"
@@ -2213,7 +2213,7 @@
           "date-time": "2026-05-13T02:55:39Z",
           "timestamp": 1778640939000
         },
-        "score": 36.610012,
+        "score": 36.610405,
         "resource": {
           "primary": {
             "URL": "https://www.ssrn.com/abstract=6713979"
@@ -2625,7 +2625,7 @@
           "date-time": "2026-02-28T05:20:35Z",
           "timestamp": 1772256035000
         },
-        "score": 36.551155,
+        "score": 36.531017,
         "resource": {
           "primary": {
             "URL": "https://www.mdpi.com/2076-3417/16/5/2244"
@@ -2789,7 +2789,7 @@
           "date-time": "2026-02-13T02:08:03Z",
           "timestamp": 1770948483000
         },
-        "score": 36.199097,
+        "score": 36.199375,
         "resource": {
           "primary": {
             "URL": "https://www.preprints.org/manuscript/202602.0996/v1"
@@ -3113,7 +3113,7 @@
           "date-time": "2026-01-21T08:53:59Z",
           "timestamp": 1768985639000
         },
-        "score": 35.76202,
+        "score": 35.762108,
         "resource": {
           "primary": {
             "URL": "https://www.e3s-conferences.org/10.1051/e3sconf/202668908004"
@@ -3221,7 +3221,7 @@
           "date-time": "2026-04-10T11:23:27Z",
           "timestamp": 1775820207000
         },
-        "score": 35.31834,
+        "score": 35.31791,
         "resource": {
           "primary": {
             "URL": "https://www.ssrn.com/abstract=6271858"
@@ -3515,7 +3515,7 @@
           "date-time": "2026-05-13T12:19:33Z",
           "timestamp": 1778674773000
         },
-        "score": 35.002033,
+        "score": 35.00181,
         "resource": {
           "primary": {
             "URL": "https://www.agroengineering.org/jae/article/view/1908"
@@ -3739,7 +3739,7 @@
           "date-time": "2026-01-07T17:53:03Z",
           "timestamp": 1767808383000
         },
-        "score": 34.71761,
+        "score": 34.717064,
         "resource": {
           "primary": {
             "URL": "https://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/979-8-3373-5017-2.ch003"
@@ -3879,7 +3879,7 @@
           "date-time": "2026-03-06T11:10:27Z",
           "timestamp": 1772795427000
         },
-        "score": 34.386826,
+        "score": 34.372726,
         "resource": {
           "primary": {
             "URL": "https://www.scholarlyreview.org/article/158711-the-role-of-retrieval-augmented-generation-in-improving-factual-accuracy-for-medical-large-language-models"
@@ -4072,7 +4072,7 @@
           "date-time": "2026-02-26T14:41:27Z",
           "timestamp": 1772116887000
         },
-        "score": 34.289566,
+        "score": 34.289917,
         "resource": {
           "primary": {
             "URL": "https://jurnal.polbeng.ac.id/index.php/ISI/article/view/1484"
@@ -4342,7 +4342,7 @@
           "date-time": "2026-05-09T02:39:59Z",
           "timestamp": 1778294399000
         },
-        "score": 34.205257,
+        "score": 34.181564,
         "resource": {
           "primary": {
             "URL": "https://academic.oup.com/sleep/article/49/Supplement_1/A153/8673444"
@@ -4869,7 +4869,7 @@
           "date-time": "2026-01-28T17:15:16Z",
           "timestamp": 1769620516000
         },
-        "score": 34.09828,
+        "score": 34.098522,
         "resource": {
           "primary": {
             "URL": "http://medrxiv.org/lookup/doi/10.64898/2026.01.24.26344477"
@@ -5042,7 +5042,7 @@
           "date-time": "2026-06-02T16:06:31Z",
           "timestamp": 1780416391000
         },
-        "score": 33.934204,
+        "score": 33.93343,
         "resource": {
           "primary": {
             "URL": "https://www.researchsquare.com/article/rs-9882260/v1"
@@ -5153,7 +5153,7 @@
           "date-time": "2026-05-16T07:57:01Z",
           "timestamp": 1778918221000
         },
-        "score": 33.460785,
+        "score": 33.46118,
         "resource": {
           "primary": {
             "URL": "https://www.ijraset.com/best-journal/hybrid-graph-neural-network-and-large-language-"
@@ -5312,7 +5312,7 @@
           "date-time": "2026-05-13T05:37:47Z",
           "timestamp": 1778650667000
         },
-        "score": 33.323067,
+        "score": 33.323322,
         "resource": {
           "primary": {
             "URL": "https://www.ssrn.com/abstract=6756498"
@@ -6229,7 +6229,7 @@
           "date-time": "2026-03-04T08:23:32Z",
           "timestamp": 1772612612000
         },
-        "score": 33.228638,
+        "score": 33.22912,
         "resource": {
           "primary": {
             "URL": "https://peerj.com/articles/cs-3642"
@@ -6448,7 +6448,7 @@
           "date-time": "2026-05-06T13:17:58Z",
           "timestamp": 1778073478000
         },
-        "score": 33.146873,
+        "score": 33.146397,
         "resource": {
           "primary": {
             "URL": "https://journals.flvc.org/FLAIRS/article/view/141782"
@@ -6588,7 +6588,7 @@
           "date-time": "2026-06-01T07:10:33Z",
           "timestamp": 1780297833000
         },
-        "score": 33.13876,
+        "score": 33.138813,
         "resource": {
           "primary": {
             "URL": "https://tns.ewapub.com/article/view/34055"
