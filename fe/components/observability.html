@@ -1,0 +1,109 @@
+<div class="obs-container">
+    <!-- Action Controls -->
+    <div class="obs-actions">
+        <div class="action-desc">
+            <h3><i class="fa-solid fa-gears color-indigo"></i> Pipeline Operations</h3>
+            <p>Trigger data extraction, cleaning, vector database building, and local LLM evaluation in the background.</p>
+        </div>
+        <button class="btn btn-primary" id="btn-run-pipeline" onclick="triggerPipelineRun()">
+            <i class="fa-solid fa-play"></i> Rerun Pipeline
+        </button>
+    </div>
+
+    <!-- Metrics Cards Grid -->
+    <div class="obs-grid">
+        <!-- Data Quality Card -->
+        <div class="obs-card" id="card-quality">
+            <div class="card-header">
+                <i class="fa-solid fa-shield-halved card-icon color-green"></i>
+                <div class="card-title">
+                    <h4>Data Quality checks</h4>
+                    <span class="badge badge-success" id="badge-quality-status">PASS</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="metric-row">
+                    <span>Total Cleaned Rows</span>
+                    <strong id="val-quality-total-rows">0</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Missing IDs Count</span>
+                    <strong id="val-quality-null-ids">0</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Is Unique IDs?</span>
+                    <strong id="val-quality-unique-ids">Yes</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Missing Titles Count</span>
+                    <strong id="val-quality-null-titles">0</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Freshness Card -->
+        <div class="obs-card" id="card-freshness">
+            <div class="card-header">
+                <i class="fa-solid fa-clock card-icon color-blue"></i>
+                <div class="card-title">
+                    <h4>Freshness Monitoring</h4>
+                    <span class="badge badge-success" id="badge-freshness-status">FRESH</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="metric-row">
+                    <span>Latest Publication</span>
+                    <strong id="val-freshness-latest">N/A</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Oldest Publication</span>
+                    <strong id="val-freshness-oldest">N/A</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Total Stale Rows</span>
+                    <strong id="val-freshness-stale">0</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Evaluation Card -->
+        <div class="obs-card" id="card-evaluation">
+            <div class="card-header">
+                <i class="fa-solid fa-bullseye card-icon color-indigo"></i>
+                <div class="card-title">
+                    <h4>QA Evaluation</h4>
+                    <span class="badge badge-neutral" id="badge-eval-status">METRICS</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="metric-row">
+                    <span>Retrieval Hit Rate</span>
+                    <strong id="val-eval-hitrate">0%</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Mean Token F1</span>
+                    <strong id="val-eval-f1">0%</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Judge Accuracy</span>
+                    <strong id="val-eval-accuracy">0%</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Mean Judge Score</span>
+                    <strong id="val-eval-score">0.00/5.0</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Section -->
+    <div class="obs-report-section">
+        <div class="report-header">
+            <h3><i class="fa-regular fa-file-lines color-indigo"></i> Pipeline Phase 1 Report</h3>
+            <button class="btn btn-secondary" onclick="copyReport()"><i class="fa-regular fa-copy"></i> Copy Markdown</button>
+        </div>
+        <div class="report-content" id="report-md-content">
+            <pre class="report-pre" id="report-pre-text">Loading report markdown...</pre>
+        </div>
+    </div>
+</div>

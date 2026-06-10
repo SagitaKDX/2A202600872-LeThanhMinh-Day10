@@ -1,0 +1,139 @@
+/* Observability Container Layout */
+.obs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 24px;
+}
+
+/* Pipeline Control Section */
+.obs-actions {
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.action-desc h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.action-desc p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Cards Grid */
+.obs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.obs-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.obs-card .card-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.card-icon {
+    font-size: 24px;
+}
+
+.card-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-title h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.obs-card .card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    border-bottom: 1px solid #f8fafc;
+    padding-bottom: 8px;
+}
+
+.metric-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.metric-row span {
+    color: var(--text-muted);
+}
+
+.metric-row strong {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Report Section */
+.obs-report-section {
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.report-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.report-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.report-content {
+    padding: 24px;
+    background-color: #f8fafc;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.report-pre {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    white-space: pre-wrap;
+    word-break: break-all;
+}

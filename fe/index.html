@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Observability Lab</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Dynamic Component Style Sheets -->
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/observability.css">
+</head>
+<body>
+    <div class="layout-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-graduation-cap brand-icon"></i>
+                <div class="brand-info">
+                    <h1 class="brand-title">RAG Lab</h1>
+                    <span class="brand-subtitle">Data Observability</span>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#chat" class="menu-item active" id="nav-chat">
+                    <i class="fa-solid fa-comments menu-icon"></i>
+                    <span>RAG Chatbot</span>
+                </a>
+                <a href="#observability" class="menu-item" id="nav-observability">
+                    <i class="fa-solid fa-chart-line menu-icon"></i>
+                    <span>Observability</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Minh Le Thanh</span>
+                        <span class="user-role">Student</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <h2 id="view-title">RAG Chatbot</h2>
+                <div class="header-status">
+                    <span class="status-indicator fresh" id="pipeline-indicator">
+                        <i class="fa-solid fa-circle-check"></i> Pipeline Normal
+                    </span>
+                </div>
+            </header>
+            <section class="content-body" id="app-content">
+                <!-- Dynamically loaded template goes here -->
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Loading interface...
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Frontend Core Application Scripts -->
+    <script src="js/chat.js"></script>
+    <script src="js/observability.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

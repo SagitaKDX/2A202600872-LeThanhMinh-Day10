@@ -1,0 +1,36 @@
+<div class="chat-container">
+    <div class="chat-main">
+        <!-- Chat History -->
+        <div class="chat-history" id="chat-history-list">
+            <div class="message-bubble agent">
+                <div class="bubble-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="bubble-content">
+                    <p>Hello! I am your RAG assistant. Ask me questions about the papers indexed in the database (e.g. details about Disdukcapil chatbot or reliability gaps).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Suggestions -->
+        <div class="chat-suggestions">
+            <span class="suggestion-tag" onclick="useSuggestion('Who authored the paper \'Metode Retrieval-Augmented Generation dalam Pengembangan Chatbot Large Language Model\'?')">
+                <i class="fa-solid fa-user-group"></i> Authors Query
+            </span>
+            <span class="suggestion-tag" onclick="useSuggestion('What is the summary of the paper \'Metode Retrieval-Augmented Generation trong Pengembangan Chatbot\'?')">
+                <i class="fa-solid fa-circle-info"></i> Summary Query
+            </span>
+            <span class="suggestion-tag" onclick="useSuggestion('List the papers in the corpus.')">
+                <i class="fa-solid fa-list"></i> General Query
+            </span>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form class="chat-input-form" id="chat-form">
+            <input type="text" id="chat-input" placeholder="Ask a question about the indexed papers..." required autocomplete="off">
+            <button type="submit" class="send-button" id="chat-send-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</div>
