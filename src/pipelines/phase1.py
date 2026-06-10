@@ -49,8 +49,15 @@ def main() -> None:
     test_set = build_test_set(df_clean, settings.paths.eval_testset)
     print(f"Generated test set with {len(test_set)} questions at {settings.paths.eval_testset}")
     
-    print("\n--- Crawl, Clean & Test Set Generation completed successfully! ---")
-    print("Steps 6-10 (Index building, Evaluation, Quality/Freshness checks, Reporting) are not implemented yet.")
+    # 6. Build Chroma index
+    print("Step 6: Building Chroma index...")
+    from retrieval.index import LocalEmbeddingIndex
+    index = LocalEmbeddingIndex.build(df_clean, settings)
+    print(f"Successfully built Chroma collection: {index.collection_name}")
+    
+    print("\n--- Crawl, Clean, Test Set & Indexing completed successfully! ---")
+    print("Steps 7-10 (Evaluation, Quality/Freshness checks, Reporting) are not implemented yet.")
     raise NotImplementedError("Student task: implement remaining steps of phase1 pipeline.")
+
 
 
