@@ -12,12 +12,12 @@ This report compares the performance and data observability of the RAG system un
 | Observability Category / Metric | 🟢 Baseline (Clean) | 🔴 Corrupted (Simulated Issues) | 🟢 Repaired (Restored) |
 | :--- | :---: | :---: | :---: |
 | **Total Test Samples** | 20 | 20 | 20 |
-| **Retrieval Hit Rate (Top-K)** | 100.0% | 100.0% | 100.0% |
-| **Mean Token F1 Score** | 100.0% | 90.0% | 100.0% |
-| **Judge Correctness Accuracy** | 100.0% | 55.0% | 55.0% |
-| **Mean LLM Judge Score (1-5)** | 5.00/5.0 | 3.50/5.0 | 3.65/5.0 |
+| **Retrieval Hit Rate (Top-K)** | 100.0% | 60.0% | 100.0% |
+| **Mean Token F1 Score** | 100.0% | 67.7% | 100.0% |
+| **Judge Correctness Accuracy** | 100.0% | 30.0% | 55.0% |
+| **Mean LLM Judge Score (1-5)** | 5.00/5.0 | 2.85/5.0 | 3.65/5.0 |
 | **Data Quality Check Status** | 🟢 PASS | 🔴 FAIL | 🟢 PASS |
-| **Total Cleaned Rows** | - | 25 | 23 |
+| **Total Cleaned Rows** | - | 23 | 23 |
 | **Missing Paper ID Count** | 0 | 0 | 0 |
 | **Is Paper ID Unique?** | Yes | No | Yes |
 | **Missing Title Count** | 0 | 0 | 0 |

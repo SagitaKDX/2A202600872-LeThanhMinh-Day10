@@ -6,3 +6,10 @@ src/*.egg-info/
 lab/
 **/__pycache__/
 apikey.txt
+
+# Databases and Local Indexes
+data/chroma/
+
+# Log files
+*.log
+chroma.log
